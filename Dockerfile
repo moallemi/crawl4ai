@@ -65,6 +65,56 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libatspi2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
+
+# Update package list*
+RUN apt-get update
+
+# Install GStreamer and related packages
+RUN apt-get install -y \
+    libgstreamer1.0-0 \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-plugins-ugly \
+    gstreamer1.0-libav
+
+
+# Install media codecs and libraries
+RUN apt-get install -y \
+    libxslt1.1 \
+    libvpx7 \
+    libevent-2.1-7 \
+    libopus0 \
+    libwebp7 \
+    libwebpdemux2 \
+    libwebpmux3 \
+    libavif15
+
+
+# Install text processing and rendering libraries
+RUN apt-get install -y \
+    libharfbuzz-icu0 \
+    libenchant-2-2 \
+    libsecret-1-0 \
+    libhyphen0
+
+# Install gaming and graphics libraries*
+RUN apt-get install -y \
+    libmanette-0.2-0 \
+    libgles2
+
+# Install speech synthesis libraries*
+RUN apt-get install -y \
+    flite1-dev
+
+# Install video encoding libraries*
+RUN apt-get install -y \
+    libx264-dev
+
+# Install woff2 library*
+RUN apt-get install -y \
+    libwoff1
+
 # GPU support if enabled and architecture is supported
 RUN if [ "$ENABLE_GPU" = "true" ] && [ "$TARGETPLATFORM" = "linux/amd64" ] ; then \
     apt-get update && apt-get install -y --no-install-recommends \

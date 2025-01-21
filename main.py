@@ -358,7 +358,8 @@ def secure_endpoint():
 # Check if site directory exists
 if os.path.exists(__location__ + "/site"):
     # Mount the site directory as a static directory
-    app.mount("/mkdocs", StaticFiles(directory="site", html=True), name="mkdocs")
+    pass
+    #app.mount("/mkdocs", StaticFiles(directory="site", html=True), name="mkdocs")
 
 site_templates = Jinja2Templates(directory=__location__ + "/site")
 
